@@ -34,4 +34,7 @@ def uncross(request, id):
     item.save()
     return redirect('home')
 
+def about(request):
+        return render(request, 'todo_list/about.html',{})    
+
 
