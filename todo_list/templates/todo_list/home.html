@@ -1,0 +1,36 @@
+{%extends 'todo_list/base.html'%}
+{%block content%}
+<div class="row"><br></div>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Event</th>
+            <th scope="col">Finished</th>
+            <th scope="col">Date created</th>
+            <th scope="col">Date updated</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for item in items%}
+        {%if item.completed%}
+        <tr class="table-danger">
+            <th>{{item.name}}</a></th>
+            <td><a href="{% url 'uncross' item.id %}">{{item.completed}}</a></td>
+            <td>{{item.created}}</td>
+            <td>{{item.updated}}</td>
+            <td><a href="{% url 'delete' item.id %}">Delete</a></td>
+        </tr>
+        {%else%}
+        <tr>
+            <th>{{item.name}}</a></th>
+            <td><a href="{% url 'crossoff' item.id %}">{{item.completed}}</a></td>
+            <td>{{item.created}}</td>
+            <td>{{item.updated}}</td>
+            <td><a href="{% url 'delete' item.id %}">Delete</a></td>
+        </tr>
+        {%endif%}
+        {%endfor%}
+    </tbody>
+</table>
+{%endblock%}
